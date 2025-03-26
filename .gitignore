@@ -1,0 +1,26 @@
+# Backend
+backend/venv/
+backend/__pycache__/
+backend/*.pyc
+backend/output/
+backend/temp_recording.wav
+
+# Backend models
+backend/app/models/vosk-model-small-de-0.15
+backend/app/models/*.onnx
+backend/app/models/*.onnx.json
+
+# Frontend
+frontend/node_modules/
+frontend/build/
+frontend/.env
+frontend/.DS_Store
+frontend/npm-debug.log*
+frontend/yarn-debug.log*
+frontend/yarn-error.log*
+
+# IDE and OS specific
+.vscode/
+.idea/
+*.swp
+.DS_Store

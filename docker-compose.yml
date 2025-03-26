@@ -1,0 +1,29 @@
+version: "3.8"
+
+services:
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    image: german-pronounciation-trainer
+    ports:
+      - "8000:8000"
+    environment:
+      # Corrected environment field with proper key-value mapping
+      APP_ENV: production
+      PLATFORM: linux/arm64  # Custom environment variable
+    platform: linux/arm64  # Ensure macOS compatibility
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    image: react-frontend
+    ports:
+      - "3000:3000"
+    environment:
+      # Corrected environment field with proper key-value mapping
+      VITE_API_BASE_URL: http://backend:8000
+    depends_on:
+      - backend
+    platform: linux/amd64  # Adjust platform for frontend

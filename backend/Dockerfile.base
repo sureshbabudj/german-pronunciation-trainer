@@ -1,0 +1,31 @@
+# Use a Python base image
+FROM python:3.9-slim
+
+# Set environment variables
+ENV PYTHONDONTWRITEBYTECODE=1
+ENV PYTHONUNBUFFERED=1
+
+# Set the working directory
+WORKDIR /app
+
+# Install system dependencies for Piper
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    build-essential \
+    cmake \
+    git \
+    libsndfile1 \
+    libatomic1 \
+    ffmpeg \
+    espeak-ng \
+    libespeak-ng-dev \
+    && apt-get clean && rm -rf /var/lib/apt/lists/*
+
+
+# Install Python dependencies for your project
+RUN pip install --upgrade pip && \
+    pip install piper_phonemize && \
+    pip install piper-tts && \
+    pip install onnxruntime
+
+# Expose a port for debugging or other purposes
+EXPOSE 8000
