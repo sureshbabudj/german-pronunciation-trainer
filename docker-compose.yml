@@ -20,10 +20,10 @@ services:
       dockerfile: Dockerfile
     image: react-frontend
     ports:
-      - "3000:3000"
+      - "3000:80"
     environment:
       # Corrected environment field with proper key-value mapping
-      VITE_API_BASE_URL: http://backend:8000
+      VITE_API_BASE_URL: /api
     depends_on:
       - backend
     platform: linux/amd64  # Adjust platform for frontend

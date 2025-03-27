@@ -10,12 +10,18 @@ RUN npm install
 COPY . .
 RUN npm run build
 
-# Use an Nginx base image for production
+# Step 2: Use Nginx to serve the built app
 FROM nginx:alpine
-COPY --from=builder /app/dist /usr/share/nginx/html
+WORKDIR /usr/share/nginx/html
 
-# Expose port 3000
-EXPOSE 3000
+# Copy React build output to Nginx's HTML directory
+COPY --from=builder /app/dist .
+
+# Copy custom Nginx configuration file
+COPY nginx.conf /etc/nginx/conf.d/default.conf
+
+# Expose port 80
+EXPOSE 80
 
 # Start Nginx
 CMD ["nginx", "-g", "daemon off;"]
