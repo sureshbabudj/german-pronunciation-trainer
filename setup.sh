@@ -15,25 +15,12 @@ cd backend
 echo "Building Dockerfile.base as piper-base..."
 docker build -f Dockerfile.base -t piper-base .
 
-# Build the main Docker image (german-pronounciation-trainer)
-echo "Building Dockerfile as german-pronounciation-trainer..."
-docker build -t german-pronounciation-trainer .
+# Navigate back to project root
+cd ..
 
-# Run the german-pronounciation-trainer container
-echo "Running german-pronounciation-trainer container..."
-docker run -d --rm --name german-pronounciation-trainer -p 8000:8000 german-pronounciation-trainer
-
-# Go to frontend directory
-echo "Navigating to frontend..."
-cd ../frontend
-
-# Build and run the frontend Docker image
-echo "Building frontend Docker image..."
-docker build -t react-frontend .
-
-# Run the frontend React app container
-echo "Running frontend React app container..."
-docker run -d --rm --name react-frontend -p 3000:3000 react-frontend
+# Use Docker Compose to build and start both backend and frontend services
+echo "Building and starting backend and frontend containers using Docker Compose..."
+docker-compose up --build -d
 
 # Print success message
-echo "Setup complete. Backend is running on port 8000, and frontend is ready to serve."
+echo "Setup complete. Backend is running on port 8000, and frontend is running on port 3000."
