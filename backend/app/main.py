@@ -18,7 +18,7 @@ app.add_middleware(
 )
 
 # Include routers
-app.include_router(audio.router)
+app.include_router(audio.router, prefix="/api", tags=["audio"])
 
 @app.get("/")
 def read_root():

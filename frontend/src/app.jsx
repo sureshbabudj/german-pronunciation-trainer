@@ -2,8 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import { MediaRecorder } from "./record";
 
-const apiBaseUrl = import.meta.env.VITE_API_BASE_URL;
-axios.defaults.baseURL = apiBaseUrl;
+axios.defaults.baseURL = '/api';
 
 function App() {
   // State Management

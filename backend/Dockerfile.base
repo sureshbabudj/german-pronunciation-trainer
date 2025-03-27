@@ -11,8 +11,6 @@ WORKDIR /app
 # Install system dependencies for Piper
 RUN apt-get update && apt-get install -y --no-install-recommends \
     build-essential \
-    cmake \
-    git \
     libsndfile1 \
     libatomic1 \
     ffmpeg \

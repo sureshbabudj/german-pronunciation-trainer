@@ -14,5 +14,12 @@ export default defineConfig(({ mode }) => {
     define: {
       "process.env": process.env,
     },
+    server: {
+      proxy: {
+        "/api": {
+          target: "http://localhost:8000", // proxy to backend for local development
+        },
+      },
+    },
   };
 });
