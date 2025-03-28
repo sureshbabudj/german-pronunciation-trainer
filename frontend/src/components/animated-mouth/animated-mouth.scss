@@ -1,0 +1,47 @@
+.mouth-container {
+  position: relative;
+  width: 200px;
+  height: 200px;
+}
+
+.lip {
+  animation: lipMovement 1s infinite ease-in-out; /* Animates lips */
+}
+
+.teeth {
+  fill: rgba($color: #e6dbdb, $alpha: 0.7);
+  animation: teethAppearance 1s infinite ease-in-out; /* Teeth appearing */
+  opacity: 0;
+}
+
+.tongue {
+  fill: #f06292;
+  animation: tongueMovement 1s infinite ease-in-out; /* Tongue moving */
+}
+
+@keyframes lipMovement {
+  0%, 100% {
+    transform: translateY(0); /* Neutral position */
+  }
+  50% {
+    transform: translateY(-5px); /* Speaking movement */
+  }
+}
+
+@keyframes teethAppearance {
+  0%, 100% {
+    opacity: 0; /* Hidden */
+  }
+  50% {
+    opacity: 1; /* Visible */
+  }
+}
+
+@keyframes tongueMovement {
+  0%, 100% {
+    transform: translateY(0); /* Neutral */
+  }
+  50% {
+    transform: translateY(-2px); /* Slight motion */
+  }
+}
